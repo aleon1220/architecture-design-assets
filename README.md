@@ -13,3 +13,7 @@ The primary goal of this repository is to decouple diagramming assets from speci
 ├── plantuml/             # Styles and snippets for PlantUML
 ├── templates/            # Architecture Decision Records (ADR) & Design Docs
 └── icons/                # Source SVGs/PNGs used to build the libraries
+
+# References
+- https://www.svgrepo.com
+- [Coding & Development Icons](https://icons.quirk.com.au/)
