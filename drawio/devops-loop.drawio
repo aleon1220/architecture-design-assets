@@ -1,0 +1,239 @@
+<mxfile host="Electron" agent="Claude">
+  <diagram name="DevOps Loop" id="devops-loop">
+    <mxGraphModel dx="1814" dy="1150" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=28;fontStyle=1;fontColor=#2C3E50;" value="DevOps Lifecycle" vertex="1">
+          <mxGeometry height="40" width="400" x="300" as="geometry" />
+        </mxCell>
+        <mxCell id="dev-plan" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#4CAF50;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0;endAngle=0.25;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;rotation=0;" value="Plan" vertex="1">
+          <mxGeometry height="280" width="280" x="260" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dev-code" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#2196F3;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0.25;endAngle=0.5;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Code" vertex="1">
+          <mxGeometry height="280" width="280" x="260" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dev-build" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#E64A19;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0.5;endAngle=0.75;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Build" vertex="1">
+          <mxGeometry height="280" width="280" x="260" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dev-test" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#00BCD4;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0.75;endAngle=1;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Test" vertex="1">
+          <mxGeometry height="280" width="280" x="260" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dev-center" parent="1" style="ellipse;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=3;fontSize=36;fontStyle=1;fontColor=#546E7A;shadow=1;" value="Dev" vertex="1">
+          <mxGeometry height="120" width="120" x="340" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="ops-deploy" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#43A047;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0;endAngle=0.25;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Deploy" vertex="1">
+          <mxGeometry height="280" width="280" x="495" y="311" as="geometry" />
+        </mxCell>
+        <mxCell id="ops-release" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#FFA000;strokeColor=none;strokeWidth=2;startAngle=0.25;endAngle=0.5;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Release" vertex="1">
+          <mxGeometry height="280" width="280" x="495" y="311" as="geometry" />
+        </mxCell>
+        <mxCell id="ops-monitor" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#F57C00;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0.5;endAngle=0.75;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Monitor" vertex="1">
+          <mxGeometry height="280" width="280" x="494" y="311" as="geometry" />
+        </mxCell>
+        <mxCell id="ops-operate" parent="1" style="shape=mxgraph.basic.partConcEllipse;fillColor=#2E7D32;strokeColor=#FFFFFF;strokeWidth=2;startAngle=0.75;endAngle=1;arcWidth=0.35;fontColor=#FFFFFF;fontSize=18;fontStyle=1;" value="Operate" vertex="1">
+          <mxGeometry height="280" width="280" x="495" y="311" as="geometry" />
+        </mxCell>
+        <mxCell id="ops-center" parent="1" style="ellipse;fillColor=#FFFFFF;strokeColor=#E0E0E0;strokeWidth=3;fontSize=36;fontStyle=1;fontColor=#546E7A;shadow=1;" value="Ops" vertex="1">
+          <mxGeometry height="120" width="120" x="575" y="391" as="geometry" />
+        </mxCell>
+        <mxCell id="line-plan" edge="1" parent="1" source="plan-desc" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;endFill=0;entryX=0.723;entryY=0.04;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="dev-plan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="215" as="sourcePoint" />
+            <mxPoint x="335" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line-monitor" edge="1" parent="1" source="monitor-icon" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;entryX=0.23;entryY=0.917;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="ops-monitor">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="720" as="sourcePoint" />
+            <mxPoint x="470" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line-release" edge="1" parent="1" source="release-icon" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;entryX=0.224;entryY=0.089;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="ops-operate">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="670" y="220" as="sourcePoint" />
+            <mxPoint x="555" y="366" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line-deploy" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;entryX=0.882;entryY=0.182;entryDx=0;entryDy=0;entryPerimeter=0;" target="ops-deploy">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="416" as="sourcePoint" />
+            <mxPoint x="770" y="416" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line-build" edge="1" parent="1" source="build-icon" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.128;entryY=0.822;entryDx=0;entryDy=0;entryPerimeter=0;rounded=0;curved=0;" target="dev-build">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="485" y="735" as="sourcePoint" />
+            <mxPoint x="345" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line-code" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;entryX=0.13;entryY=0.152;entryDx=0;entryDy=0;entryPerimeter=0;" target="dev-test">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="240" as="sourcePoint" />
+            <mxPoint x="290" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="deploy-icon" parent="1" style="ellipse;fillColor=#43A047;strokeColor=#FFFFFF;strokeWidth=4;fontSize=36;fontColor=#FFFFFF;shadow=1;" value="⚙" vertex="1">
+          <mxGeometry height="70" width="70" x="890" y="381" as="geometry" />
+        </mxCell>
+        <mxCell id="deploy-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Deploy" vertex="1">
+          <mxGeometry height="24" width="100" x="880" y="459" as="geometry" />
+        </mxCell>
+        <mxCell id="deploy-desc" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;fontFamily=Helvetica;" value="Deploy the software into production environments using automated deployment and configuration management tools." vertex="1">
+          <mxGeometry height="70" width="180" x="840" y="486" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-6" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="153" width="250" x="23" y="606" as="geometry" />
+        </mxCell>
+        <mxCell id="build-icon" parent="FHWvb6lmbAjsEZNVdZgH-6" style="ellipse;fillColor=#E64A19;strokeColor=#FFFFFF;strokeWidth=4;fontSize=32;fontColor=#FFFFFF;shadow=1;" value="🔧" vertex="1">
+          <mxGeometry height="70" width="70" x="90" as="geometry" />
+        </mxCell>
+        <mxCell id="build-title" parent="FHWvb6lmbAjsEZNVdZgH-6" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Build" vertex="1">
+          <mxGeometry height="24" width="230" x="10" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="build-desc" parent="FHWvb6lmbAjsEZNVdZgH-6" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;fontFamily=Helvetica;" value="Compile and build the code into executable software artifacts or packages." vertex="1">
+          <mxGeometry height="50" width="250" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="line-test" edge="1" parent="1" source="test-icon" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;entryX=0.718;entryY=0.949;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="dev-code">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="696" as="sourcePoint" />
+            <mxPoint x="335" y="1076" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-7" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="210" width="300" x="590" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="release-icon" parent="FHWvb6lmbAjsEZNVdZgH-7" style="ellipse;fillColor=#FFA000;strokeColor=#FFFFFF;strokeWidth=4;fontSize=32;fontColor=#FFFFFF;shadow=1;" value="🚀" vertex="1">
+          <mxGeometry height="70" width="70" x="130" as="geometry" />
+        </mxCell>
+        <mxCell id="release-title" parent="FHWvb6lmbAjsEZNVdZgH-7" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Release" vertex="1">
+          <mxGeometry height="24" width="150" x="90" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="release-desc" parent="FHWvb6lmbAjsEZNVdZgH-7" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;fontFamily=Helvetica;" value="Prepare the software for deployment by packaging, versioning, and documenting the release." vertex="1">
+          <mxGeometry height="55" width="160" x="90" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-18" parent="FHWvb6lmbAjsEZNVdZgH-7" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=0;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="31" y="177" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-8" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="158" width="220" x="32" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="code-icon" parent="FHWvb6lmbAjsEZNVdZgH-8" style="ellipse;fillColor=#2196F3;strokeColor=#FFFFFF;strokeWidth=4;fontSize=22;fontColor=#FFFFFF;fontStyle=1;shadow=1;" value="&lt;/&gt;" vertex="1">
+          <mxGeometry height="70" width="70" x="80" as="geometry" />
+        </mxCell>
+        <mxCell id="code-title" parent="FHWvb6lmbAjsEZNVdZgH-8" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Code" vertex="1">
+          <mxGeometry height="24" width="200" x="-10" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="code-desc" parent="FHWvb6lmbAjsEZNVdZgH-8" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#607D8B;whiteSpace=wrap;" value="Develop and write the necessary code for software applications, infrastructure, and tools." vertex="1">
+          <mxGeometry height="55" width="220" x="-20" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="test-icon" parent="1" style="ellipse;fillColor=#00BCD4;strokeColor=#FFFFFF;strokeWidth=4;fontSize=32;fontColor=#FFFFFF;shadow=1;" value="🧪" vertex="1">
+          <mxGeometry height="70" width="70" x="424" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-11" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="74" width="235" x="340" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="test-title" parent="FHWvb6lmbAjsEZNVdZgH-11" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Test" vertex="1">
+          <mxGeometry height="24" width="230" x="6" y="-4" as="geometry" />
+        </mxCell>
+        <mxCell id="test-desc" parent="FHWvb6lmbAjsEZNVdZgH-11" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;fontFamily=Helvetica;" value="Validate the functionality, performance, and security of the software through automated testing and quality assurance processes." vertex="1">
+          <mxGeometry height="50" width="235" x="3" y="19" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-12" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="150" width="235" x="609" y="668" as="geometry" />
+        </mxCell>
+        <mxCell id="monitor-icon" parent="FHWvb6lmbAjsEZNVdZgH-12" style="ellipse;fillColor=#F57C00;strokeColor=#FFFFFF;strokeWidth=4;fontSize=32;fontColor=#FFFFFF;shadow=1;" value="🖥" vertex="1">
+          <mxGeometry height="70" width="70" x="82.5" as="geometry" />
+        </mxCell>
+        <mxCell id="monitor-title" parent="FHWvb6lmbAjsEZNVdZgH-12" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Monitor" vertex="1">
+          <mxGeometry height="24" width="230" x="5" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="monitor-desc" parent="FHWvb6lmbAjsEZNVdZgH-12" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;fontFamily=Helvetica;" value="Continuously track and analyze the performance and usage of the software, collecting metrics and logs to identify and address issues." vertex="1">
+          <mxGeometry height="50" width="235" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-13" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=-45;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Helvetica;" value="Release" vertex="1">
+          <mxGeometry height="24" width="80" x="506" y="358" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-14" parent="1" style="shape=stencil(bVLLbsMgEPwajo4INMrZdZtDpShV/oDGENNgiAAFt1/fXaCp3dZCPHZ2ZscLhHfhdiaMTqOxgfAnwtgQ45XwlrAdjJTSKvGV85C0Y5RSWDKDAemmZXp0U6EBgiidzYzwZ0JBCSOEd1cRB9jpvjBG8e58609FrAb3sN1AfrfGOZO3eNx+668Rw/UnC+lKG1MUrLOyxEL07iJLlDBO8zeHmqR7sJQTHgqAv710HeUUsYCzsVFi1OajEFqvhQELqCZsaIL0WlUzmBv0Z63N6CycpD4PsQBvzvS/7S+Mzp3M/byWTg5eqjtr2c4QhY8HpYKstbBRm4KhQiPsaXC+3oTueyP/L5jHvn05HPE6jt1fQ9Cyu6dl6ypSo/mMjycfvwA=);whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="120" width="120" x="80" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-20" parent="1" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=90;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="735" y="439" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-21" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="172" width="240" x="343" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="plan-icon" parent="FHWvb6lmbAjsEZNVdZgH-21" style="ellipse;fillColor=#4CAF50;strokeColor=#FFFFFF;strokeWidth=4;fontSize=32;fontColor=#FFFFFF;shadow=1;" value="📋" vertex="1">
+          <mxGeometry height="70" width="70" x="95" as="geometry" />
+        </mxCell>
+        <mxCell id="plan-title" parent="FHWvb6lmbAjsEZNVdZgH-21" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Plan" vertex="1">
+          <mxGeometry height="24" width="220" x="20" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="plan-desc" parent="FHWvb6lmbAjsEZNVdZgH-21" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;" value="Collaboratively strategize and outline goals, requirements, and resources for the DevOps implementation." vertex="1">
+          <mxGeometry height="70" width="240" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-22" parent="1" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=0;flipH=1;legacyAnchorPoints=0;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="384" y="327" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-23" parent="1" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=90;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="270" y="441" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-24" parent="1" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=0;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="385" y="556" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-26" parent="1" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=268;flipV=0;legacyAnchorPoints=0;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="488" y="441" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-27" parent="1" style="shape=mxgraph.arrows.chevron_arrow;html=1;verticalLabelPosition=bottom;verticalAlign=top;strokeWidth=2;strokeColor=#000000;rotation=0;flipH=1;legacyAnchorPoints=0;" value="" vertex="1">
+          <mxGeometry height="20" width="30" x="619" y="556" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-28" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=45;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Helvetica;" value="Deploy" vertex="1">
+          <mxGeometry height="24" width="80" x="676.9995526217004" y="345.99955262170056" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-29" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=30;rounded=1;sketch=1;curveFitting=1;jiggle=2;arcSize=50;fontFamily=Helvetica;" value="Plan" vertex="1">
+          <mxGeometry height="24" width="80" x="435.99955262170045" y="337.9995526217005" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-30" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=-45;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Helvetica;" value="Operate" vertex="1">
+          <mxGeometry height="24" width="80" x="664.9995526217004" y="510.99955262170056" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-31" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=45;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Helvetica;" value="Monitor" vertex="1">
+          <mxGeometry height="24" width="80" x="515.9995526217004" y="505.99955262170056" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-32" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=-45;rounded=1;sketch=1;curveFitting=1;jiggle=2;" value="Code" vertex="1">
+          <mxGeometry height="24" width="80" x="274.99955262170045" y="348.9995526217005" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-33" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=45;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Helvetica;" value="Build" vertex="1">
+          <mxGeometry height="24" width="80" x="279.99955262170045" y="505.99955262170056" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-34" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=25;fontStyle=1;fontColor=#FFFFFF;rotation=-35;rounded=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Helvetica;" value="Test" vertex="1">
+          <mxGeometry height="24" width="62" x="431" y="521" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-36" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="160" width="265" x="839" y="574" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-1" connectable="0" parent="FHWvb6lmbAjsEZNVdZgH-36" style="group" value="" vertex="1">
+          <mxGeometry height="70" width="70" x="90" as="geometry" />
+        </mxCell>
+        <mxCell id="line-operate" edge="1" parent="FHWvb6lmbAjsEZNVdZgH-1" style="endArrow=none;html=1;strokeColor=#B0BEC5;strokeWidth=1.5;entryX=0.848;entryY=0.837;entryDx=0;entryDy=0;entryPerimeter=0;" target="ops-release">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="35" y="35" as="sourcePoint" />
+            <mxPoint x="35" y="-95" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operate-icon" parent="FHWvb6lmbAjsEZNVdZgH-1" style="ellipse;fillColor=light-dark(#ffa00a, #64a868);strokeColor=#FFFFFF;strokeWidth=4;fontSize=32;fontColor=#FFFFFF;shadow=1;" value="💻" vertex="1">
+          <mxGeometry height="70" width="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FHWvb6lmbAjsEZNVdZgH-2" connectable="0" parent="FHWvb6lmbAjsEZNVdZgH-36" style="group" value="" vertex="1">
+          <mxGeometry height="80" width="265" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="operate-title" parent="FHWvb6lmbAjsEZNVdZgH-2" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#263238;" value="Operate" vertex="1">
+          <mxGeometry height="24" width="240" as="geometry" />
+        </mxCell>
+        <mxCell id="operate-desc" parent="FHWvb6lmbAjsEZNVdZgH-2" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#607D8B;whiteSpace=wrap;fontFamily=Helvetica;" value="Maintain and monitor the software system in production, ensuring its stability, scalability, and reliability." vertex="1">
+          <mxGeometry height="55" width="260" x="5" y="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
