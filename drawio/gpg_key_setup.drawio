@@ -1,0 +1,121 @@
+<mxfile host="Electron" agent="Claude Code">
+  <diagram id="gpg-diagram" name="GPG Key Setup">
+    <mxGraphModel dx="1433" dy="719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;" value="GPG Key Migration → Portable, Hardware-Backed Signing" vertex="1">
+          <mxGeometry height="30" width="1100" x="40" y="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_sub" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#555555;whiteSpace=wrap;" value="RSA 4096 private key relocated from an Ubuntu laptop onto a YubiKey — same Key ID — now signing, authenticating &amp; encrypting from a Windows 11 + WSL2 work laptop." vertex="1">
+          <mxGeometry height="34" width="1100" x="40" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_past" parent="1" style="swimlane;html=1;startSize=30;fontStyle=1;fontSize=14;rounded=1;arcSize=3;whiteSpace=wrap;fillColor=#EEEEEE;strokeColor=#9E9E9E;swimlaneFillColor=#FAFAFA;" value="① Past State" vertex="1">
+          <mxGeometry height="470" width="250" x="40" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n_lenovo" parent="sl_past" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23E95420%22%20d%3D%22M17.61.455a3.41%203.41%200%200%200-3.41%203.41%203.41%203.41%200%200%200%203.41%203.41%203.41%203.41%200%200%200%203.41-3.41%203.41%203.41%200%200%200-3.41-3.41zM12.92.8C8.923.777%205.137%202.941%203.148%206.451a4.5%204.5%200%200%201%20.26-.007%204.92%204.92%200%200%201%202.585.737A8.316%208.316%200%200%201%2012.688%203.6%204.944%204.944%200%200%201%2013.723.834%2011.008%2011.008%200%200%200%2012.92.8zm9.226%204.994a4.915%204.915%200%200%201-1.918%202.246%208.36%208.36%200%200%201-.273%208.303%204.89%204.89%200%200%201%201.632%202.54%2011.156%2011.156%200%200%200%20.559-13.089zM3.41%207.932A3.41%203.41%200%200%200%200%2011.342a3.41%203.41%200%200%200%203.41%203.409%203.41%203.41%200%200%200%203.41-3.41%203.41%203.41%200%200%200-3.41-3.41zm2.027%207.866a4.908%204.908%200%200%201-2.915.358%2011.1%2011.1%200%200%200%207.991%206.698%2011.234%2011.234%200%200%200%202.422.249%204.879%204.879%200%200%201-.999-2.85%208.484%208.484%200%200%201-.836-.136%208.304%208.304%200%200%201-5.663-4.32zm11.405.928a3.41%203.41%200%200%200-3.41%203.41%203.41%203.41%200%200%200%203.41%203.41%203.41%203.41%200%200%200%203.41-3.41%203.41%203.41%200%200%200-3.41-3.41z%22%2F%3E%3C%2Fsvg%3E;" value="&lt;b&gt;Lenovo Laptop&lt;/b&gt;&lt;br&gt;Ubuntu 24.04 LTS" vertex="1">
+          <mxGeometry height="60" width="60" x="80" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="n_past_note" parent="sl_past" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F9A825;align=left;spacingLeft=8;spacingRight=6;verticalAlign=top;spacingTop=4;fontSize=11;size=14;" value="&lt;b&gt;Origin&lt;/b&gt;&lt;br&gt;GPG key pair originally generated and stored in the local software keyring." vertex="1">
+          <mxGeometry height="110" width="200" x="25" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dx2J5aS9IZjoLHuhTZMC-1" parent="sl_past" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rotation=0;gradientColor=#0057D2;strokeColor=none;gradientDirection=east;fillColor=#2395FF;rounded=0;pointerEvents=0;fontFamily=Helvetica;fontSize=16;fontColor=#FFFFFF;spacingTop=4;spacingBottom=4;spacingLeft=4;spacingRight=4;points=[];fontStyle=1" value="1" vertex="1">
+          <mxGeometry height="30" width="30" x="210" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_current" parent="1" style="swimlane;html=1;startSize=30;fontStyle=1;fontSize=14;rounded=1;arcSize=3;whiteSpace=wrap;fillColor=#DAE8FC;strokeColor=#6C8EBF;swimlaneFillColor=#F5F9FF;" value="② Current Portable Setup" vertex="1">
+          <mxGeometry height="470" width="560" x="310" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n_work" parent="sl_current" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%230078D4%22%20d%3D%22M1%201h10v10H1zM13%201h10v10H13zM1%2013h10v10H1zM13%2013h10v10H13z%22%2F%3E%3C%2Fsvg%3E;" value="&lt;b&gt;Work Laptop&lt;/b&gt;&lt;br&gt;Win 11 Enterprise · WSL2" vertex="1">
+          <mxGeometry height="70" width="70" x="34" y="37" as="geometry" />
+        </mxCell>
+        <mxCell id="n_git" parent="sl_current" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23F05032%22%20d%3D%22M13.09%2023.549a1.54%201.54%200%200%201-2.18%200L.451%2013.089a1.54%201.54%200%200%201%200-2.179l7.191-7.19%202.733%202.733a1.85%201.85%200%200%200%20.964%202.326v6.66a1.849%201.849%200%201%200%201.54%200V8.957l2.508%202.508a1.85%201.85%200%201%200%201.09-1.09l-2.634-2.634a1.85%201.85%200%200%200-2.378-2.377L8.73%202.63%2010.91.451a1.54%201.54%200%200%201%202.179%200l10.459%2010.46a1.54%201.54%200%200%201%200%202.179z%22%2F%3E%3C%2Fsvg%3E;" value="&lt;b&gt;Git&lt;/b&gt;&lt;br&gt;Commit signing" vertex="1">
+          <mxGeometry height="60" width="60" x="40" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="n_yubikey" parent="sl_current" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%2384BD00%22%20d%3D%22m12.356%2012.388%202.521-7.138h3.64l-6.135%2015.093H8.539l1.755-4.136L6%205.25h3.717ZM12%200C5.381%200%200%205.381%200%2012s5.381%2012%2012%2012%2012-5.381%2012-12S18.619%200%2012%200Zm0%201.5c5.808%200%2010.5%204.692%2010.5%2010.5S17.808%2022.5%2012%2022.5%201.5%2017.808%201.5%2012%206.192%201.5%2012%201.5Z%22%2F%3E%3C%2Fsvg%3E;" value="&lt;b&gt;YubiKey 5&lt;/b&gt;&lt;br&gt;Hardware security token" vertex="1">
+          <mxGeometry height="72" width="72" x="260" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="n_gpg" parent="sl_current" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#FFFDF3;strokeColor=#F2C200;align=left;spacingLeft=8;spacingRight=6;verticalAlign=top;spacingTop=6;fontSize=11;" value="&lt;b&gt;GnuPG on the token&lt;/b&gt;&lt;br&gt;RSA 4096 · Sign / Auth / Encrypt&lt;br&gt;Key ID &lt;b&gt;…54B44&lt;/b&gt;&lt;br&gt;&lt;i&gt;&lt;br&gt;Private key never leaves the device&lt;/i&gt;" vertex="1">
+          <mxGeometry height="110" width="180" x="205" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="n_enc" parent="sl_current" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%235B6B7B%22%20d%3D%22M12%201a5%205%200%200%200-5%205v3H6a2%202%200%200%200-2%202v9a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2v-9a2%202%200%200%200-2-2h-1V6a5%205%200%200%200-5-5zm-3%208V6a3%203%200%200%201%206%200v3H9zm3%204a2%202%200%200%201%201%203.732V19a1%201%200%200%201-2%200v-2.268A2%202%200%200%201%2012%2013z%22%2F%3E%3C%2Fsvg%3E;" value="&lt;b&gt;Encrypted&lt;/b&gt;&lt;br&gt;files &amp; secrets" vertex="1">
+          <mxGeometry height="60" width="60" x="440" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="dx2J5aS9IZjoLHuhTZMC-2" parent="sl_current" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rotation=0;gradientColor=#0057D2;strokeColor=none;gradientDirection=east;fillColor=#2395FF;rounded=0;pointerEvents=0;fontFamily=Helvetica;fontSize=16;fontColor=#FFFFFF;spacingTop=4;spacingBottom=4;spacingLeft=4;spacingRight=4;points=[];fontStyle=1;container=1;" value="2" vertex="1">
+          <mxGeometry height="30" width="30" x="130" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="dx2J5aS9IZjoLHuhTZMC-3" parent="sl_current" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rotation=0;gradientColor=#0057D2;strokeColor=none;gradientDirection=east;fillColor=#2395FF;rounded=0;pointerEvents=0;fontFamily=Helvetica;fontSize=16;fontColor=#FFFFFF;spacingTop=4;spacingBottom=4;spacingLeft=4;spacingRight=4;points=[];fontStyle=1" value="3" vertex="1">
+          <mxGeometry height="30" width="30" x="369" y="33" as="geometry" />
+        </mxCell>
+        <mxCell id="sl_remote" parent="1" style="swimlane;html=1;startSize=30;fontStyle=1;fontSize=14;rounded=1;arcSize=3;whiteSpace=wrap;fillColor=#D5E8D4;strokeColor=#82B366;swimlaneFillColor=#F4FBF3;" value="③ Remote — GitHub" vertex="1">
+          <mxGeometry height="470" width="260" x="890" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n_gh" parent="sl_remote" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%2324292F%22%20d%3D%22M12%20.297c-6.63%200-12%205.373-12%2012%200%205.303%203.438%209.8%208.205%2011.385.6.113.82-.258.82-.577%200-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422%2018.07%203.633%2017.7%203.633%2017.7c-1.087-.744.084-.729.084-.729%201.205.084%201.838%201.236%201.838%201.236%201.07%201.835%202.809%201.305%203.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93%200-1.31.465-2.38%201.235-3.22-.135-.303-.54-1.523.105-3.176%200%200%201.005-.322%203.3%201.23.96-.267%201.98-.399%203-.405%201.02.006%202.04.138%203%20.405%202.28-1.552%203.285-1.23%203.285-1.23.645%201.653.24%202.873.12%203.176.765.84%201.23%201.91%201.23%203.22%200%204.61-2.805%205.625-5.475%205.92.42.36.81%201.096.81%202.22%200%201.606-.015%202.896-.015%203.286%200%20.315.21.69.825.57C20.565%2022.092%2024%2017.592%2024%2012.297c0-6.627-5.373-12-12-12%22%2F%3E%3C%2Fsvg%3E;" value="&lt;b&gt;GitHub.com&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="60" x="95" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="n_verified" parent="sl_remote" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#E8F5E9;strokeColor=#43A047;align=center;fontSize=11;" value="&lt;b&gt;✔ Verified&lt;/b&gt;&lt;br&gt;Signed commits validated" vertex="1">
+          <mxGeometry height="58" width="180" x="35" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="n_settings" parent="sl_remote" style="shape=note;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9E9E9E;align=left;spacingLeft=8;spacingRight=6;verticalAlign=top;spacingTop=4;fontSize=11;size=14;dashed=1;" value="&lt;b&gt;Account settings — unchanged&lt;/b&gt;&lt;br&gt;• GPG public key (same Key ID)&lt;br&gt;• SSH authentication key&lt;br&gt;&lt;i&gt;No reconfiguration needed&lt;/i&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="25" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="leg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#FBFBFB;strokeColor=#BDBDBD;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;spacingRight=12;fontSize=11;" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;&lt;b&gt;[S] Signing&lt;/b&gt; → Git commit signatures, shown as a GitHub Verified badge. &amp;nbsp;&amp;nbsp; &lt;b&gt;[A] Authentication&lt;/b&gt; → SSH access to GitHub. &amp;nbsp;&amp;nbsp; &lt;b&gt;[E] Encryption&lt;/b&gt; → encrypt / decrypt files &amp; secrets.&lt;br&gt;&lt;br&gt;&lt;b&gt;Line styles:&lt;/b&gt; &amp;nbsp; dashed purple = one-time key migration &amp;nbsp; · &amp;nbsp; solid = runtime signing &amp; push &amp;nbsp; · &amp;nbsp; dashed teal = SSH authentication.&lt;br&gt;The GPG &lt;b&gt;Key ID is unchanged&lt;/b&gt; after migration — GitHub required no reconfiguration." vertex="1">
+          <mxGeometry height="105" width="1100" x="40" y="595" as="geometry" />
+        </mxCell>
+        <mxCell id="e_migrate" edge="1" parent="1" source="n_lenovo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;dashed=1;dashPattern=8 4;strokeWidth=2;strokeColor=#8E24AA;fontColor=#6A1B9A;exitX=1;exitY=0.5;entryX=0;entryY=0.83;endArrow=block;" target="n_yubikey" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Migrated private key&lt;/font&gt;">
+          <mxGeometry relative="1" x="-0.4709" y="-15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="300" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_work_git" edge="1" parent="1" source="n_work" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;strokeColor=#B0BEC5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n_git" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_git_yubi" edge="1" parent="1" source="n_git" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;strokeWidth=2;strokeColor=#2E7D32;fontColor=#1B5E20;exitX=1;exitY=0.5;entryX=0;entryY=0.9;endArrow=block;" target="n_yubikey" value="[S] Request signature (touch)">
+          <mxGeometry relative="1" x="-0.2801" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="485" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_work_gh" edge="1" parent="1" source="n_work" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;strokeWidth=2;strokeColor=#1565C0;fontColor=#0D47A1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;endArrow=block;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="n_gh" value="Push signed commits (HTTPS)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_yubi_gh" edge="1" parent="1" source="n_yubikey" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;dashed=1;dashPattern=6 4;strokeWidth=1.5;strokeColor=#00897B;fontColor=#00695C;exitX=1;exitY=0.5;entryX=0;entryY=0.7;endArrow=block;" target="n_gh" value="[A] SSH authentication">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="807" y="231" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_yubi_enc" edge="1" parent="1" source="n_yubikey" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;strokeWidth=1.5;strokeColor=#607D8B;fontColor=#455A64;exitX=1;exitY=0.8;entryX=0.5;entryY=0;endArrow=block;" target="n_enc" value="[E] Encrypt / decrypt">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="253" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_yubi_gpg" edge="1" parent="1" source="n_gnupg" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;dashed=1;dashPattern=1 4;strokeColor=#D0B000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n_gpg" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gh_verified" edge="1" parent="1" source="n_gh" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;strokeColor=#43A047;fontColor=#2E7D32;exitX=0.5;exitY=1;entryX=0.5;entryY=0;endArrow=block;" target="n_verified" value="validates signature">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gh_settings" edge="1" parent="1" source="n_gh" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;dashed=1;dashPattern=6 4;strokeColor=#9E9E9E;fontColor=#616161;exitX=1;exitY=0.5;entryX=1;entryY=0.5;endArrow=block;" target="n_settings" value="checks &lt;br&gt;public key">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n_gnupg" parent="1" style="shape=image;html=1;verticalLabelPosition=bottom;verticalAlign=top;labelPosition=center;align=center;imageAspect=0;aspect=fixed;fontSize=11;spacingTop=2;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%230093DD%22%20d%3D%22M2.968%2011.583h1.274v-3.82A7.76%207.76%200%200%201%2012.005%200a7.76%207.76%200%200%201%207.762%207.763v3.783c-.018.01-.037.028-.056.037l-.01.01-.008.009h-.01l-.01.01-.009.009H19.636l-.018.018h-.02l-.018.01h-.01l-.009.01-.009.009h-.01l-.009.009-.009.01-.01.009-.009.009-.028.019-.019.01-.028.018-.018.01-.02.009-.027.018-.019.01-.01.009-.027.019-.02.01-.046.027-.019.01-.018.009-.02.01h-.008l-.057.027h-.019c-.018.01-.037.02-.065.038h-.01l-.009.01-.028.018-.018.01-.029.018-.018.01h-.01l-.028.018-.018.01-.02.009c-.018.01-.046.019-.065.028l-.018.01-.02.009-.037.018-.037.02-.047.018-.047.019-.019.009-.037.019-.019.01c-1.545.739-4.017%201.516-8.708%201.853-3.362.244-5.403%201.723-6.724%203.502zm4.842%200h8.371v-3.82a4.184%204.184%200%200%200-4.186-4.186A4.184%204.184%200%200%200%207.81%207.763zm13.222%201.461V24H5.572c1.704-.946%202.968-.852%205.075-.787%202.865.094%206.03-1.105%207.585-2.696%201.554-1.592-.14-.375-1.901.074-1.76.45-5.17.497-7.454-.103%207.173.094%209.973-2.219%2011.555-4.307%201.583-2.079-.683-.365-2.153.356-1.47.72-4.036%201.227-6.864.852%204.27-.01%207.52-2.144%209.607-4.345z%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="38" width="38" x="587" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="dx2J5aS9IZjoLHuhTZMC-5" edge="1" parent="1" source="n_yubikey" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;jettySize=auto;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;dashed=1;dashPattern=1 4;strokeColor=#D0B000;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="n_gnupg" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="606" y="267" as="sourcePoint" />
+            <mxPoint x="594" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
