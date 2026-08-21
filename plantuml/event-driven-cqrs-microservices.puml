@@ -1,0 +1,111 @@
+@startuml EventDrivenCQRSArchitecture
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam roundCorner 10
+skinparam defaultFontName "Segoe UI", Arial, sans-serif
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam ArrowColor #455A64
+skinparam ArrowThickness 1.5
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #90A4AE
+    BorderThickness 1.5
+}
+
+skinparam package {
+    BackgroundColor #F0F4F8
+    BorderColor #B0BEC5
+    FontColor #263238
+    FontStyle bold
+}
+
+skinparam database {
+    BackgroundColor #FFF8E1
+    BorderColor #FFA000
+    BorderThickness 1.5
+}
+
+skinparam queue {
+    BackgroundColor #EDE7F6
+    BorderColor #7E57C2
+    BorderThickness 1.5
+}
+
+title **Enterprise Event-Driven Microservices Architecture (CQRS & Outbox Pattern)**
+
+actor "Client Applications\n(Web / Mobile / B2B)" as Client #E3F2FD
+
+rectangle "API & Edge Layer" as EdgeLayer #ECEFF1 {
+    rectangle "API Gateway / Envoy Proxy\n- Rate Limiting\n- Authentication (JWT)\n- Route Dispatching" as APIGW #E0F2F1
+}
+
+package "Write Pipeline (Command Model)" as WritePipeline {
+    rectangle "Order Command Service\n- Command Handlers\n- Domain Aggregates\n- Business Invariant Validation" as CommandService #E1F5FE
+    
+    database "Transactional Store\n(PostgreSQL / Aurora)\n- Orders Table\n- Outbox Table" as WriteDB
+    
+    rectangle "CDC Engine\n(Debezium Connector)" as CDC #FFF3E0
+}
+
+package "Event Streaming Backbone" as Backbone {
+    queue "Kafka / Redpanda Cluster\n- 'order.created.v1'\n- 'order.payment.completed.v1'\n- 'order.inventory.reserved.v1'" as KafkaTopics
+    queue "Dead Letter Queue (DLQ)\n- Failed Message Processing" as DLQ #FFEBEE
+    rectangle "Schema Registry\n(Protobuf / Avro)" as SchemaReg #EDE7F6
+}
+
+package "Read Pipeline (Query Model)" as ReadPipeline {
+    rectangle "Order Query Projector\n- Event Consumer\n- Read-Model Builder" as Projector #E8F5E9
+    
+    database "Elasticsearch / OpenSearch\n(Full-text Search & Aggregations)" as SearchDB #E8F8F5
+    database "Redis Cache\n(Fast Key-Value Retrieval)" as CacheDB #FFEBEE
+    database "Read Replica / Analytics DB\n(Materialized Views)" as ReadDB #E8F5E9
+    
+    rectangle "Order Query Service\n- High Throughput Queries\n- Filter & Pagination" as QueryService #E8F5E9
+}
+
+package "Async Consumers & Integration" as Consumers {
+    rectangle "Payment Processing Service" as PaymentSvc #F3E5F5
+    rectangle "Inventory Reservation Service" as InventorySvc #F3E5F5
+    rectangle "Customer Notification Worker\n(Email / SMS / Webhooks)" as NotifyWorker #F3E5F5
+}
+
+package "Observability & Audit" as Telemetry {
+    rectangle "OpenTelemetry Collector\n- Distributed Tracing (W3C TraceContext)\n- Unified Metrics & Logs" as OTel #ECEFF1
+}
+
+' Flow Connections - Write Path
+Client --> APIGW : 1. POST /api/v1/orders (CreateOrderCommand)
+APIGW --> CommandService : 2. Forward Command
+CommandService --> WriteDB : 3. ACID Transaction\n(Save Entity + Append Outbox Entry)
+WriteDB ..> CDC : 4. Tail Transaction Log (WAL)
+CDC --> KafkaTopics : 5. Publish Domain Events with Schema
+KafkaTopics ..> SchemaReg : Validate Schema
+
+' Flow Connections - Async Integration
+KafkaTopics --> PaymentSvc : 6a. Consume 'order.created'
+KafkaTopics --> InventorySvc : 6b. Consume 'order.created'
+KafkaTopics --> NotifyWorker : 6c. Consume Events
+KafkaTopics --> Projector : 6d. Consume Events for Read Model
+Projector --> DLQ : Push Malformed / Poison Pills
+
+' Read Model Projections
+Projector --> SearchDB : Update Search Index
+Projector --> CacheDB : Invalidate / Warm Cache
+Projector --> ReadDB : Sync Materialized View
+
+' Read Path
+Client --> APIGW : 7. GET /api/v1/orders/{id}\nGET /api/v1/orders/search
+APIGW --> QueryService : 8. Forward Query
+QueryService --> CacheDB : Check Cache
+CacheDB .[#grey].> QueryService : Cache Miss
+QueryService --> SearchDB : Complex Queries / Facets
+QueryService --> ReadDB : Direct Hydration
+
+' Telemetry
+CommandService ..> OTel : Trace Context
+QueryService ..> OTel : Trace Context
+PaymentSvc ..> OTel : Trace Context
+
+@enduml
