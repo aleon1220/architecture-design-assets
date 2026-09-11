@@ -1,0 +1,125 @@
+@startuml ZeroTrustKubernetesMesh
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam roundCorner 10
+skinparam defaultFontName "Segoe UI", Arial, sans-serif
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam ArrowColor #37474F
+skinparam ArrowThickness 1.5
+
+skinparam package {
+    BackgroundColor #ECEFF1
+    BorderColor #90A4AE
+    FontColor #263238
+    FontStyle bold
+}
+
+skinparam node {
+    BackgroundColor #FFFFFF
+    BorderColor #607D8B
+    BorderThickness 1.5
+}
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #78909C
+    BorderThickness 1.5
+}
+
+skinparam database {
+    BackgroundColor #FFFDE7
+    BorderColor #FBC02D
+    BorderThickness 1.5
+}
+
+title **Zero-Trust Multi-Tier Architecture & Service Mesh on Kubernetes**
+
+actor "Users & External Services" as Actor #E1F5FE
+
+package "Edge Security & Ingress" as Edge {
+    rectangle "Cloudflare / Cloud Armor\n- DDoS Protection\n- WAF Rules & Bot Management\n- Edge TLS 1.3" as WAF #EDE7F6
+    rectangle "Istio Ingress Gateway (Envoy)\n- Mutual TLS Termination\n- JWT / OIDC Validation (OAuth2-Proxy)\n- L7 Rate Limiting" as IngressGW #E0F2F1
+}
+
+package "Identity & Policy Providers" as SecurityPlane {
+    rectangle "IdP (Keycloak / Okta / Entra ID)\n- OIDC / OAuth2 Tokens\n- MFA & Role Claims" as IdP #E8EAF6
+    rectangle "HashiCorp Vault\n- Dynamic Database Credentials\n- PKI / Secret Rotation" as Vault #FFF8E1
+    rectangle "SPIFFE / SPIRE Server\n- Workload Identity Attestation\n- X.509 SVID Issuance" as SpireServer #FBE9E7
+}
+
+package "Kubernetes Production Cluster (Zero-Trust Service Mesh)" as K8sCluster {
+    
+    package "Namespace: apps-frontend" as NSFrontend #E0F7FA {
+        node "Frontend Pod" as PodFE {
+            rectangle "App Container\n(Next.js / Nginx)" as AppFE #B2EBF2
+            rectangle "Envoy Sidecar Proxy\n(Strict mTLS + SPIFFE ID)" as SidecarFE #80DEEA
+        }
+    }
+
+    package "Namespace: apps-backend" as NSBackend #E8F5E9 {
+        node "Order API Pod" as PodOrder {
+            rectangle "App Container\n(Golang / Spring)" as AppOrder #C8E6C9
+            rectangle "Envoy Sidecar Proxy\n(Strict mTLS + AuthZ Policy)" as SidecarOrder #A5D6A7
+        }
+        node "Payment API Pod" as PodPay {
+            rectangle "App Container\n(Rust / Node.js)" as AppPay #C8E6C9
+            rectangle "Envoy Sidecar Proxy\n(Strict mTLS + AuthZ Policy)" as SidecarPay #A5D6A7
+        }
+    }
+
+    package "Namespace: data-tier" as NSData #FFF3E0 {
+        database "Managed PostgreSQL\n(Encrypted at Rest - CMEK)" as DBPostgres #FFE0B2
+        database "Redis Cache Cluster\n(TLS in-transit enabled)" as DBCache #FFE0B2
+    }
+
+    package "Cluster Control & Governance" as K8sControl #F5F5F5 {
+        rectangle "Istio Control Plane (istiod)\n- Envoy xDS Config & Pilot\n- CA & Certificate Injection" as Istiod #CFD8DC
+        rectangle "GitOps (ArgoCD)\n- Declarative Desired State Sync\n- Audit & Drift Detection" as ArgoCD #CFD8DC
+        rectangle "Policy Engine (Kyverno / OPA Gatekeeper)\n- Admission Controller\n- Image Signature Verification (Cosign)" as OPA #CFD8DC
+    }
+}
+
+package "Observability & Security Telemetry" as Observability #ECEFF1 {
+    rectangle "OpenTelemetry Collector" as OTel #ECEFF1
+    rectangle "Prometheus & Grafana\n(Mesh Traffic & SLOs)" as Prom #ECEFF1
+    rectangle "Jaeger / Tempo\n(Distributed Tracing)" as Tracing #ECEFF1
+    rectangle "Falco / Security Logs\n(Runtime Threat Detection)" as Falco #FFEBEE
+}
+
+' Interactions
+Actor --> WAF : HTTPS (TLS 1.3)
+WAF --> IngressGW : Verified Edge Traffic
+IngressGW ..> IdP : 1. Verify User Bearer Token
+IngressGW --> SidecarFE : 2. mTLS (SPIFFE Identity Verification)
+SidecarFE --> AppFE : Localhost loopback
+
+AppFE --> SidecarFE : Request Order API
+SidecarFE --> SidecarOrder : 3. mTLS + L7 AuthZ Header
+SidecarOrder --> AppOrder : Localhost loopback
+
+AppOrder --> SidecarOrder : Request Payment API
+SidecarOrder --> SidecarPay : 4. Strict mTLS (Service-to-Service)
+SidecarPay --> AppPay : Localhost loopback
+
+' Secrets & Identities
+SpireServer ..> SidecarFE : Short-lived X.509 SVID
+SpireServer ..> SidecarOrder : Short-lived X.509 SVID
+Vault ..> AppOrder : Inject Leased DB Credentials via ESO
+AppOrder --> DBPostgres : 5. Encrypted Connection (TLS + Leased Creds)
+AppOrder --> DBCache : Encrypted Cache Access
+
+' Governance & Telemetry
+Istiod ..> IngressGW : xDS Policy Push
+Istiod ..> SidecarOrder : xDS Policy Push
+ArgoCD ..> K8sCluster : Reconcile Manifests
+OPA ..> K8sCluster : Enforce Pod Security Standards
+
+SidecarFE ..> OTel : Access Logs & Spans
+SidecarOrder ..> OTel : Access Logs & Spans
+SidecarPay ..> OTel : Access Logs & Spans
+OTel --> Prom : Metrics
+OTel --> Tracing : Traces
+K8sCluster ..> Falco : Kernel / Audit Events
+
+@enduml

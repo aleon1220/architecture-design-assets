@@ -1,0 +1,115 @@
+@startuml EnterpriseLLMRAGPipeline
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam roundCorner 10
+skinparam defaultFontName "Segoe UI", Arial, sans-serif
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam ArrowColor #37474F
+skinparam ArrowThickness 1.5
+
+skinparam package {
+    BackgroundColor #F3F4F6
+    BorderColor #9E9E9E
+    FontColor #212121
+    FontStyle bold
+}
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #78909C
+    BorderThickness 1.5
+}
+
+skinparam database {
+    BackgroundColor #EDE7F6
+    BorderColor #673AB7
+    BorderThickness 1.5
+}
+
+skinparam control {
+    BackgroundColor #FFF3E0
+    BorderColor #E65100
+}
+
+title **Enterprise AI / LLM RAG & Agentic Tool Execution Pipeline**
+
+actor "End User / Application" as User #E1F5FE
+
+package "API Gateway & Security Layer" as GatewayLayer {
+    rectangle "API Gateway & Rate Limiter\n- AuthN / AuthZ (API Key / OAuth2)\n- Token Bucket Rate Limiting" as APIGW #E0F2F1
+    rectangle "Input Guardrails (NeMo / Llama Guard)\n- Prompt Injection & Jailbreak Detection\n- PII Masking / Anonymization\n- Toxicity Filter" as InputGuard #FFEBEE
+}
+
+package "Caching & Semantic Memory" as CacheLayer {
+    database "Semantic Cache (Redis / Qdrant)\n- Vector Cosine Similarity Lookup\n- TTL & Eviction Policies" as SemanticCache #E8F5E9
+}
+
+package "Hybrid Retrieval Augmented Generation (RAG)" as RAGLayer {
+    rectangle "Embedding Model\n(Text-Embedding-004 / Ada-002)" as EmbedModel #EDE7F6
+    
+    database "Dense Vector Store\n(Pinecone / Qdrant / pgvector)\n- HNSW / IVFFlat Indexes" as VectorDB
+    database "Sparse Search Index\n(Elasticsearch / OpenSearch)\n- BM25 Full-Text Retrieval" as BM25DB #FFF8E1
+    
+    rectangle "Hybrid Fusion & Re-Ranker\n(Reciprocal Rank Fusion + Cohere ReRank)\n- Context Window Compression" as ReRanker #E1F5FE
+}
+
+package "Agentic Core & Orchestration" as AgenticCore {
+    rectangle "Agentic Orchestrator\n- Query Intent Classifier\n- Multi-Step ReAct Loop\n- Memory & Session Context" as Orchestrator #EDE7F6
+    
+    package "Tool Calling Sandbox" as ToolRegistry #FFFFFF {
+        rectangle "Enterprise SQL Connector\n(Read-Only Analytics DB)" as ToolSQL #FFF3E0
+        rectangle "Internal Enterprise API\n(CRM / ERP / Tickets)" as ToolAPI #FFF3E0
+        rectangle "Code Execution Sandbox\n(gVisor / Firecracker)" as ToolSandbox #FFF3E0
+    }
+}
+
+package "Foundational LLM Layer" as FoundationLLM {
+    rectangle "Frontier LLM Provider\n(Google Gemini / Anthropic Claude / OpenAI GPT-4o)\n- Structured Outputs (JSON Schema)\n- Function Calling Protocol" as LLM #E8EAF6
+}
+
+package "Output Verification & Governance" as OutputLayer {
+    rectangle "Output Guardrails & Factuality Verifier\n- Groundedness / Hallucination Check\n- Citation & Attribution Validator\n- PII Unmasking" as OutputGuard #FFEBEE
+}
+
+package "LLMOps & Observability" as LLMOps {
+    rectangle "Langfuse / OpenInference / Arize Phoenix\n- Token Usage & Cost Attribution\n- Latency Breakdown per Step\n- User Feedback (Thumbs Up/Down)" as Telemetry #ECEFF1
+}
+
+' User Query Path
+User --> APIGW : 1. User Prompt / Query
+APIGW --> InputGuard : 2. Inspect & Sanitize
+InputGuard --> SemanticCache : 3. Check Semantic Cache
+
+' Cache Hit / Miss Branching
+SemanticCache ..> User : [Cache Hit (>0.96 similarity)] Return Cached Answer
+
+' Cache Miss -> RAG Flow
+SemanticCache --> EmbedModel : [Cache Miss] 4. Generate Query Embeddings
+EmbedModel --> VectorDB : 5a. Dense ANN Search
+InputGuard --> BM25DB : 5b. Sparse Keyword Search
+
+VectorDB --> ReRanker : Raw Vector Chunks
+BM25DB --> ReRanker : Raw Keyword Matches
+
+ReRanker --> Orchestrator : 6. Top-K Ranked Context Chunks
+
+' Orchestrator & Tool Execution
+Orchestrator --> LLM : 7. Prompt + Context + Tool Definitions
+LLM --> Orchestrator : 8. Tool Call Required (e.g. Query SQL)
+
+Orchestrator --> ToolSQL : 9a. Execute Query
+Orchestrator --> ToolAPI : 9b. Call API
+ToolSQL --> Orchestrator : Tool Output / Data
+
+Orchestrator --> LLM : 10. Synthesize Final Answer with Tool Results
+LLM --> OutputGuard : 11. Draft Response & Citations
+
+' Output Validation & Return
+OutputGuard --> User : 12. Validated, Grounded Response with Citations
+
+' Observability Tracing
+Orchestrator ..> Telemetry : Log Traces, Prompts & Tokens
+OutputGuard ..> Telemetry : Log Evaluation & Hallucination Score
+
+@enduml
